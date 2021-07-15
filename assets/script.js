@@ -1,7 +1,8 @@
-var apiKey = '&appid=4c355b8b572a6c802a8a9809e5784ed8';
+var apiKey = '&appid=b26059fbf296e0093c1075969aa0d13c';
 var cityName = $('#searchWord').val();
 var date = new Date();
 var units = '&units=imperial';
+var forecastDays = '&cnt=5';
 
 
 $('#searchWord').keypress(function(event) {
@@ -12,6 +13,110 @@ $('#searchWord').keypress(function(event) {
     }
 });
 
-$('#searchBtn').on('click', function() {
+$('#searchBtn').on('click', function(e) {
+    e.preventDefault();
+    $('forecastTitle').addClass('show');
+
+    cityName = $('#searchWord').val();
+
+    $('searchWord').val('');
+    dailyWeather(cityName);
+    currentForecast(cityName)
+    localStorage.setItem(cityName);
+});
+
+function listItems() {
+    var cityStored = $('<li>').addClass('list-group-item').text(cityName);
+    $('.list').append(cityStored);
+}
+
+function currentConditions(response) {
+    var temp = (response.main.temp);
+    temp = Math.floor(temp);
     
-})
+    $('#currentCity').empty();
+    
+    
+    var card = $('<div>').addClass('card');
+    var cardContent = $('<div>').addClass('card-content');
+    var city = $('<h4>').addClass('card-head').text(response.name);
+    var cityDate = $('<h4>').addClass('card-head').text(date.toLocaleString('en-US'));
+    var temperature = $('<p>').addClass('card-body current-temp').text('Temperature: ' + temp + ' F');
+    var humidity = $('<p>').addClass('card-body current-humidity').text('Humidity: ' + response.main.humidity + '%');
+    var windMph = $('<p>').addClass('card-body current-wind').text('Wind Speed: ' + response.wind.speed + ' MPH');
+    var uvIndex = $('<p>').addClass('card-body current-wind').text('UV Index: ' + response.wind.speed + ' MPH');
+    var weatherImage = $('<img>').attr('src', 'https://openweathermap.org/img/w/' + response.weather[0].icon + '.png');
+    
+    city.append(cityDate, weatherImage);
+    cardContent.append(city, temperature, humidity, windMph);
+    card.append(cardContent);
+    $('#currentCity').append(card);
+}
+
+function dailyWeather(cityName) {
+    var callApi = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + units + apiKey;
+
+    $.ajax({
+        url: callApi,
+        method: 'GET'
+    })
+    .then(function(response){
+
+        console.log(response);
+        console.log(response.name);
+        console.log(response.weather[0].icon);
+        console.log(response.main.humidity);
+        console.log(response.wind.speed);
+
+        
+
+
+        currentConditions(response);
+        listItems();
+    })    
+}
+
+function currentForecast(cityName) {
+    $('#forecast').empty();
+    var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + units + apiKey;
+    $.ajax({
+        url: queryUrl,
+        method: 'GET'
+    })
+    .then(function (fiveDayResponse) {
+        console.log(fiveDayResponse);
+        for (let i = 0; i != fiveDayResponse.list.length; i+=8) {
+            var cityObj = {
+                date: fiveDayResponse.list[i].dt_txt,
+                icon: fiveDayResponse.list[i].weather[0].icon,
+                temp: fiveDayResponse.list[i].main.temp,
+                humidity: fiveDayResponse.list[i].main.humidity,
+            }
+            var dateStr = cityObj.date;
+            var trimDate = dateStr.substring(0, 10);
+            var weatherImage = `https:///openweathermap.org/img/w/${cityObj.icon}.png`;
+            forecastCard(trimDate, weatherImage, cityObj.temp, cityObj.humidity);
+        }
+    })
+}
+
+function forecastCard(date, icon, temp, humidity) {
+    
+    var card = $("<div>").addClass("card col-md-2 ml-4 bg-primary text-white");
+    var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
+    var cityDate = $("<h4>").addClass("card-title");
+    var temperature = $("<p>").addClass("card-text forecastTemp");
+    var humidity = $("<span>").addClass("card-text forecastHumidity");
+    var image = $("<img>").addClass('weather-icon');
+
+    $("#forecast").append(card);
+    card.append(cardBody);
+    cityDate.text(date);
+    image.attr('src', icon);
+    temperature.text(`Temp: ${temp} F`);
+    humidity.text(`Humidity: ${humidity}%`);
+    cardBody.append(cityDate, image, temperature, humidity);
+}
+              
+
+    
