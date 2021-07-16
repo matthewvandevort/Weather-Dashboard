@@ -10,7 +10,6 @@ Description of project: Create a Weather Dashboard that displays the current wea
 
 * When I view current weather conditions for that city, then  I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index. (uv index not completed :(  )
 
-
 * When I view future weather conditions for that city,
 then I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 
@@ -25,13 +24,9 @@ then I am presented with a 5-day forecast that displays the date, an icon repres
 
 # Resources Used
 
-* [Set Interval MDN](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
-
 * [Event Listeners MDN](https://developer.mozilla.org/en-US/docs/web/api/eventlistener)
 
 * [Bootstrap Docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
-
-* [Moment Docs](https://momentjs.com/docs/)
 
 * [jQuery Docs](https://api.jquery.com/)
 
@@ -39,4 +34,8 @@ then I am presented with a 5-day forecast that displays the date, an icon repres
 
 # Sources
 
-* Thanks to my Instructor Dan Gross and TA's Andrew H. and Ross K.
+* Thanks to my Instructor Dan Gross and TA's Andrew H. and Ross K, and my tutor, Simpn Rennocks.  Also, a shout out to Cat and Jose for helping me talk through an issue.
+
+# Unfourtunates
+
+* I wasn't able to figure out local storage for some aweful reason and coul not get the UV Index to show up properly...Damn.
