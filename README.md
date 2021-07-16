@@ -32,6 +32,8 @@ then I am presented with a 5-day forecast that displays the date, an icon repres
 
 * [YouTube](https://www.youtube.com/)
 
+* [Openweather API](https://openweathermap.org/api)
+
 # Sources
 
 * Thanks to my Instructor Dan Gross and TA's Andrew H. and Ross K, and my tutor, Simpn Rennocks.  Also, a shout out to Cat and Jose for helping me talk through an issue.
