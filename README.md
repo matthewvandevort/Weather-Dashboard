@@ -17,10 +17,11 @@ then I am presented with a 5-day forecast that displays the date, an icon repres
 # Screenshot
 
 ![Weather Dashboard](assets/Weather1.jpeg)
+![Weather Dashboard2](assets/Weather2.jpeg)
 
 # Link to GitHub Page
 
-[Weather Dashboard](https://github.com/matthewvandevort/Weather-Dashboard)
+[Weather Dashboard](https://matthewvandevort.github.io/Weather-Dashboard/)
 
 # Resources Used
 
