@@ -14,14 +14,13 @@ Description of project: Create a Weather Dashboard that displays the current wea
 * When I view future weather conditions for that city,
 then I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 
-
 # Screenshot
 
-![Workday Planner](assets/Workday_Planner.jpeg)
+![Weather Dashboard](assets/Weather 1.jpeg)
 
-# Link to Deployed Project
+# Link to GitHub Page
 
-[Workday Planner](https://matthewvandevort.github.io/Work-Day-Scheduler/)
+[Weather Dashboard](https://github.com/matthewvandevort/Weather-Dashboard)
 
 # Resources Used
 
