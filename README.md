@@ -16,7 +16,7 @@ then I am presented with a 5-day forecast that displays the date, an icon repres
 
 # Screenshot
 
-![Weather Dashboard](assets/Weather 1.jpeg)
+![Weather Dashboard](assets/Weather1.jpeg)
 
 # Link to GitHub Page
 
